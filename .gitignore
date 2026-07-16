@@ -1,7 +1,7 @@
 # OpenTofu / Terraform
 .terraform/
-.terraform.lock.hcl
 *.tfstate
+!terraform.tfstate
 *.tfstate.*.backup
 *.tfstate.backup
 terraform.rc
