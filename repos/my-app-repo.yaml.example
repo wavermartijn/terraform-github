@@ -1,0 +1,23 @@
+description: Example application repository managed by OpenTofu.
+visibility: internal
+default_branch: main
+homepage_url: https://example.com
+has_issues: true
+has_projects: false
+has_wiki: false
+has_discussions: false
+allow_merge_commit: true
+allow_squash_merge: true
+allow_rebase_merge: false
+allow_auto_merge: false
+delete_branch_on_merge: true
+is_template: false
+archived: false
+topics:
+  - opentofu
+  - github
+vulnerability_alerts: true
+allowed_users:
+  wavermartijn:
+    owner: true
+    permission: admin
