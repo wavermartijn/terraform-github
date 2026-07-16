@@ -1,5 +1,5 @@
 description: "Repository management for GitHub repos"
-visibility: private
+visibility: public
 default_branch: "main"
 homepage_url: ""
 has_issues: true
