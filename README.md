@@ -11,14 +11,8 @@ Manage GitHub repositories through YAML definitions and OpenTofu.
 
 Export your GitHub token before running OpenTofu commands:
 
-```powershell
-$env:GITHUB_TOKEN = "ghp_..."
-```
-
-Or in bash:
-
 ```bash
-export GITHUB_TOKEN="ghp_..."
+export TF_VAR_github_token="ghp_..."
 ```
 
 The owner defaults to `wavermartijn` and can be changed via `var.github_owner` or the `-var` flag.
@@ -93,14 +87,6 @@ allowed_users:
 
 Use the provided script to import a repository that already exists on GitHub into the OpenTofu state.
 
-### PowerShell (Windows)
-
-```powershell
-.\scripts\import_repo.ps1
-```
-
-### Bash (Linux / macOS / WSL / Git Bash)
-
 ```bash
 bash scripts/import_repo.sh
 ```
@@ -126,7 +112,6 @@ After importing, run `tofu plan` to ensure the remote configuration matches your
 ├── repos/               # Repository YAML definitions
 │   └── my-app-repo.yaml
 ├── scripts/             # Helper scripts
-│   ├── import_repo.ps1
 │   └── import_repo.sh
 └── README.md
 ```
