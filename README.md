@@ -17,6 +17,12 @@ export TF_VAR_github_token="ghp_..."
 
 The owner defaults to `wavermartijn` and can be changed via `var.github_owner` or the `-var` flag.
 
+## Pull Request Plans
+
+Pull requests targeting `main` run `tofu validate` and `tofu plan` against the committed `terraform.tfstate`.
+
+Add a repository Actions secret named `TF_GITHUB_TOKEN` containing a GitHub personal access token with `repo` and `read:org` scopes. For security, the plan job runs only for branches in this repository; secrets are not exposed to fork pull requests.
+
 ## Usage
 
 1. Initialize OpenTofu:

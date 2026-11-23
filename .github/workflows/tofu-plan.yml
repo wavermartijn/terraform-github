@@ -1,0 +1,39 @@
+name: OpenTofu Plan
+
+on:
+  pull_request:
+    branches:
+      - main
+
+permissions:
+  contents: read
+
+concurrency:
+  group: tofu-plan-${{ github.event.pull_request.number }}
+  cancel-in-progress: true
+
+jobs:
+  plan:
+    if: github.event.pull_request.head.repo.full_name == github.repository
+    runs-on: ubuntu-latest
+    env:
+      TF_IN_AUTOMATION: "true"
+      TF_INPUT: "false"
+      TF_VAR_github_token: ${{ secrets.TF_GITHUB_TOKEN }}
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up OpenTofu
+        uses: opentofu/setup-opentofu@v1
+        with:
+          tofu_version: 1.12.1
+
+      - name: Initialize OpenTofu
+        run: tofu init -input=false
+
+      - name: Validate configuration
+        run: tofu validate -no-color
+
+      - name: Plan changes
+        run: tofu plan -input=false -lock=false -no-color

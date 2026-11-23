@@ -76,6 +76,9 @@ resource "github_repository" "repos" {
     }
   }
 
+  lifecycle {
+    ignore_changes = [has_downloads]
+  }
 }
 
 resource "github_repository_collaborator" "collaborators" {
